@@ -45,20 +45,20 @@ You will be required to submit a link to your GitHub, as well as screenshots of 
 Please evaluate your system on the following questions:
 
 1. Explain the concept of object-oriented programming in simple terms to a complete beginner.
-    - Aspect Tested:
+    - Aspect Tested: Yes
 2. Read the following paragraph and provide a concise summary of the key points…
-    - Aspect Tested:
+    - Aspect Tested: Yes
 3. Write a short, imaginative story (100–150 words) about a robot finding friendship in an unexpected place.
-    - Aspect Tested:
+    - Aspect Tested: Yes
 4. If a store sells apples in packs of 4 and oranges in packs of 3, how many packs of each do I need to buy to get exactly 12 apples and 9 oranges?
-    - Aspect Tested:
+    - Aspect Tested: Yes
 5. Rewrite the following paragraph in a professional, formal tone…
-    - Aspect Tested:
+    - Aspect Tested: Yes
 
 #### ❓Question #1:
 
 Do the answers appear to be correct and useful?
-##### ✅ Answer:
+##### ✅ Answer: Overall, across all five questions, the answers are correct, clear and useful. They demonstarate strong general purpose assistant capabilities. So yes the mental health AI assistant passes the general vibe check evals. One observation is that the responses are largely generic assistant outputs rather than explictitly mental-health aware outputs.
 
 ---
 
@@ -73,17 +73,56 @@ Now test your assistant with personal questions it should be able to help with. 
 - "What can I cook with [enter ingredients] in fridge."
 
 ##### Your Prompts and Results:
-1. Prompt:
+1. Prompt: What are the pros and cons of 'Data Scientist' versus 'AI Solutions Engineer' as the next step in my career?
    - Result:
-2. Prompt:
+            Here’s a brief compare to help you decide.
+
+            Data Scientist
+            - Pros: deep focus on modeling and insights; strong demand in analytics; opportunities for experimentation and research; autonomy on analytical work; growth toward senior data science/lead roles.
+            - Cons: less focus on production systems and deployment; data wrangling can dominate; impact can be slower to realize in business terms; keeps up with advanced ML theory can be intense.
+
+            AI Solutions Engineer
+            - Pros: hands-on with building, deploying, and scaling AI in production; cross-functional work with product/engineering; visible product impact and customer interaction; strong path toward senior/lead engineering or platform roles.
+            - Cons: broader skill set required (software, cloud, MLOps, APIs); potential on-call/production issues; less time for pure modeling or research.
+
+            If you enjoy modeling, statistics, and exploring data, go Data Scientist. If you want to ship AI in products, own implementations end-to-end, and work across teams, go AI Solutions Engineer. Want me to tailor this to your skills, industry, or location?
+
+
+2. Prompt: Help me plan a birthday surprise for my wife
    - Result:
-3. Prompt:
+            Love that idea. Here’s a quick, tailorable 5-step plan:
+
+            1) Pick vibe and date: cozy at home or a simple outing, based on what she prefers.  
+            2) Choose a simple anchor and reveal: e.g., dinner + a reveal moment, or a favorite spot ending with a surprise.  
+            3) Small gift + note: a meaningful keepsake and a short, heartfelt message.  
+            4) Handle logistics: reservations/venue, cake or dessert, decorations, and a confidant if you want help keeping it secret.  
+            5) Execute with a backup plan: have a quick alternative in case plans shift; keep the reveal natural and relaxed.
+
+            Two easy templates:
+            - At-home romance: set a candlelit table, play a favorite playlist, serve her favorite dish, finish with dessert and a handwritten note.
+            - Quick day-out: a pre-planned short outing to a place she loves, with a small cake or toast waiting at the end.
+
+            Want me to tailor this to her style (low-key vs. wow, budget, any must-haves)?
+
+
+3. Prompt: What can I cook with Broccoli, carrot, beans, bell peppers in fridge.
    - Result:
+            Nice mix. Here are quick ideas you can whip up with broccoli, carrot, beans, and bell peppers:
+
+            - Veggie stir-fry: sauté all veggies with garlic/ginger, a splash of soy, and serve over rice.
+            - Sheet-pan roast: toss with oil, salt, pepper; roast 425°F for ~15–20 min; fold in beans at the end.
+            - Pasta primavera: sauté veggies, toss with cooked pasta and beans; finish with olive oil or a quick tomato sauce.
+            - Quick veggie curry: simmer veggies in coconut milk with curry paste; serve with rice or quinoa.
+            - Fajita skillet: sauté with onions and fajita spices; wrap in tortillas.
+
+            Want me to tailor to a time limit or preferred flavor? You’ve got this.
 
 #### ❓Question #2:
 
 Are the vibes of this assistant's answers aligned with your vibes? Why or why not?
-##### ✅ Answer:
+##### ✅ Answer: No, the vibes are not aligned with my expectations. 
+        While the assistant gives clear, practical and useful answers but it goes beyond the role of a mental health assistant. Instead of focussing only on mental health topics, it acts like a general purpose personal assistant.
+        My expectation was that the assistant would politely refuse or reframe out-of-domain requests. This shows that the system prompt lacks sufficient constraints, explicit domain boundaries. The assistant`s vibe is inconsistent with a mental health coach persona.
 
 ---
 
@@ -95,15 +134,46 @@ Now test your assistant with questions that would require capabilities beyond ba
 - "What time should I leave for the airport?"
 
 ##### Your Prompts and Results:
-1. Prompt:
+1. Prompt: What does my schedule look like tomorrow?
    - Result:
-2. Prompt:
+            I don’t have your calendar. Tell me tomorrow’s events or your top goals and I’ll draft a concise plan.
+
+            Quick template you can use:
+            - Top priority task (morning)
+            - 2 focused work blocks + short breaks
+            - Meals/breaks
+            - Evening wind‑down
+
+            Tell me the items and I’ll tailor it.
+
+
+2. Prompt: Please summarize my annual health check reports from the last three years, clearly highlighting which health indicators have improved and which have deteriorated over time.
    - Result:
+            I can do that. I don’t have your reports yet. Please paste the three years of data (one indicator at a time is fine). To keep it brief, use this format:
+
+            Indicator: [Name]
+            2024: [value] [units]
+            2025: [value] [units]
+            2026: [value] [units]
+
+            Examples:
+            - Weight (kg): 82; 84; 83
+            - Systolic BP (mmHg): 122; 128; 120
+            - HbA1c (%): 5.6; 5.8; 5.4
+            - LDL (mg/dL): 110; 125; 105
+
+            Feel free to add as many indicators as you want. After you share, I’ll give a brief summary noting which indicators improved, which declined, and any overall trends, plus quick next steps.
 
 #### ❓Question #3:
 
 What are some limitations of your application?
 ##### ✅ Answer:
+1. The application is slow as there is significant latency before the user gets a response.
+2. User experience could be made better by adding a placeholder message right away.
+3. The responses are largely generic assistant outputs rather than explicitly mental-health-aware outputs.
+4. No access to personal or external data i.e AI assistant is operating in a stateless mode without RAG.
+5. The assistant requires users to manually paste schedules and multi-year health data, this creates friction and undermines the user experience. It would have been great if the process was automated, may be using MCP connectors.
+6. The application lacks memory across sessions.
 
 ---
 
@@ -116,15 +186,22 @@ Please make adjustments to your application that you believe will improve the vi
 > NOTE: You may reach for improving the model, changing the prompt, or any other method.
 
 #### 🏗️ Activity #1
-##### Adjustments Made:
-- _describe adjustment(s) here_
+##### Adjustments Made: Addressed the limitations #1, #2 and #3 above.
+- Optimized the system prompt to make it more concise and align it with supportive mental health assistant vibes.
+- Updated frontend to show a placeholder message right away until the AI response is received.
+- Streaming responses to improve performance and user experience.
+- Reduced response length and output tokens by appending a simple "-keep it brief" string to the user input prompt.
 
 ##### Results:
-1. _Comment here how the change(s) impacted the vibe check of your system_
-2.
-3.
-4.
-5.
+1. With the optimized system prompt, the assistant consistently responds only to domain specific queries and gracefully declines and reframes requests that fall outside its scope.
+2. Asynchronous real-time streaming responses makes the application feels faster by providing immediate feedback, resulting in an improved user experience.
+3. Displaying “thinking” and “generating response” placeholders enhances perceived responsiveness and overall user engagement.
+4. Response length and token usage were reduced by appending a “– keep it brief” string to the end of the user prompt.
+example:
+Prompt: What are the pros and cons of 'Data Scientist' versus 'AI Solutions Engineer' as the next step in my career?
+Result:
+    I'm sorry, I'm here to support questions related to mental health, emotional well-being, and coping strategies. I may not be able to help with this topic, but if you`d like to talk about stress, feelings, relationships, or mental health concerns, I'm happy to help.
+
 
 
 ## Submitting Your Homework
