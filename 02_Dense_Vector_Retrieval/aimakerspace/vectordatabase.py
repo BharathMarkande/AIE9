@@ -1,6 +1,6 @@
 import numpy as np
 from collections import defaultdict
-from typing import List, Tuple, Callable
+from typing import List, Tuple, Callable, Dict, Optional
 from aimakerspace.openai_utils.embedding import EmbeddingModel
 import asyncio
 
@@ -16,21 +16,38 @@ def cosine_similarity(vector_a: np.array, vector_b: np.array) -> float:
 class VectorDatabase:
     def __init__(self, embedding_model: EmbeddingModel = None):
         self.vectors = defaultdict(np.array)
+        self.metadata = {}  # Store metadata for each text key
         self.embedding_model = embedding_model or EmbeddingModel()
 
-    def insert(self, key: str, vector: np.array) -> None:
+    def insert(self, key: str, vector: np.array, metadata: Optional[Dict] = None) -> None:
         self.vectors[key] = vector
+        if metadata is not None:
+            self.metadata[key] = metadata
 
     def search(
         self,
         query_vector: np.array,
         k: int,
         distance_measure: Callable = cosine_similarity,
+        metadata_filter: Optional[Dict] = None,
     ) -> List[Tuple[str, float]]:
-        scores = [
-            (key, distance_measure(query_vector, vector))
-            for key, vector in self.vectors.items()
-        ]
+        scores = []
+        for key, vector in self.vectors.items():
+            # Apply metadata filter if provided
+            if metadata_filter is not None:
+                if key not in self.metadata:
+                    continue
+                # Check if all filter conditions match
+                matches = all(
+                    self.metadata[key].get(filter_key) == filter_value
+                    for filter_key, filter_value in metadata_filter.items()
+                )
+                if not matches:
+                    continue
+            
+            score = distance_measure(query_vector, vector)
+            scores.append((key, score))
+        
         return sorted(scores, key=lambda x: x[1], reverse=True)[:k]
 
     def search_by_text(
@@ -39,18 +56,28 @@ class VectorDatabase:
         k: int,
         distance_measure: Callable = cosine_similarity,
         return_as_text: bool = False,
+        metadata_filter: Optional[Dict] = None,
     ) -> List[Tuple[str, float]]:
         query_vector = self.embedding_model.get_embedding(query_text)
-        results = self.search(query_vector, k, distance_measure)
+        results = self.search(query_vector, k, distance_measure, metadata_filter)
         return [result[0] for result in results] if return_as_text else results
 
     def retrieve_from_key(self, key: str) -> np.array:
         return self.vectors.get(key, None)
+    
+    def get_metadata(self, key: str) -> Optional[Dict]:
+        """Retrieve metadata for a given key."""
+        return self.metadata.get(key, None)
 
-    async def abuild_from_list(self, list_of_text: List[str]) -> "VectorDatabase":
+    async def abuild_from_list(
+        self, 
+        list_of_text: List[str], 
+        list_of_metadata: Optional[List[Dict]] = None
+    ) -> "VectorDatabase":
         embeddings = await self.embedding_model.async_get_embeddings(list_of_text)
-        for text, embedding in zip(list_of_text, embeddings):
-            self.insert(text, np.array(embedding))
+        for i, (text, embedding) in enumerate(zip(list_of_text, embeddings)):
+            metadata = list_of_metadata[i] if list_of_metadata and i < len(list_of_metadata) else None
+            self.insert(text, np.array(embedding), metadata)
         return self
 
 
