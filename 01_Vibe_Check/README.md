@@ -120,9 +120,7 @@ Now test your assistant with personal questions it should be able to help with. 
 #### ❓Question #2:
 
 Are the vibes of this assistant's answers aligned with your vibes? Why or why not?
-##### ✅ Answer: No, the vibes are not aligned with my expectations. 
-        While the assistant gives clear, practical and useful answers but it goes beyond the role of a mental health assistant. Instead of focussing only on mental health topics, it acts like a general purpose personal assistant.
-        My expectation was that the assistant would politely refuse or reframe out-of-domain requests. This shows that the system prompt lacks sufficient constraints, explicit domain boundaries. The assistant`s vibe is inconsistent with a mental health coach persona.
+##### ✅ Answer: No, the vibes are not aligned with my expectations. While the assistant gives clear, practical and useful answers but it goes beyond the role of a mental health assistant. Instead of focussing only on mental health topics, it acts like a general purpose personal assistant. My expectation was that the assistant would politely refuse or reframe out-of-domain requests. This shows that the system prompt lacks sufficient constraints, explicit domain boundaries. The assistant`s vibe is inconsistent with a mental health coach persona.
 
 ---
 
@@ -197,10 +195,11 @@ Please make adjustments to your application that you believe will improve the vi
 2. Asynchronous real-time streaming responses makes the application feels faster by providing immediate feedback, resulting in an improved user experience.
 3. Displaying “thinking” and “generating response” placeholders enhances perceived responsiveness and overall user engagement.
 4. Response length and token usage were reduced by appending a “– keep it brief” string to the end of the user prompt.
+
 example:
 Prompt: What are the pros and cons of 'Data Scientist' versus 'AI Solutions Engineer' as the next step in my career?
 Result:
-    I'm sorry, I'm here to support questions related to mental health, emotional well-being, and coping strategies. I may not be able to help with this topic, but if you`d like to talk about stress, feelings, relationships, or mental health concerns, I'm happy to help.
+I'm sorry, I'm here to support questions related to mental health, emotional well-being, and coping strategies. I may not be able to help with this topic, but if you`d like to talk about stress, feelings, relationships, or mental health concerns, I'm happy to help.
 
 
 
