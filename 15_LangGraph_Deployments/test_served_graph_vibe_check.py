@@ -12,7 +12,7 @@ def main():
     # Question designed to elicit a short, factual reply that may fail the vibe check
     # (friendly/positive tone) on first attempt, so we see the agent -> vibe_check -> agent loop.
     input_message = (
-        "What is photosynthesis? Answer in the driest, most technical one sentence possible. No warmth, no friendliness, no approachability, no politeness, no nothing. Just the facts."
+        "What is photosynthesis? Answer in the driest, most technical one sentence possible. No warmth and friendliness. Just the facts"
     )
     for chunk in client.runs.stream(
         None,  # Threadless run
