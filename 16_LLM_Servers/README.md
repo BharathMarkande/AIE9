@@ -83,7 +83,18 @@ What is the difference between serverless and dedicated endpoints?
 
 #### ✅ Answer:
 
-_(insert your answer here)_
+|Feature|Serverless endpoint|Dedicated endpoint|
+|-------|-------------------|------------------|
+|Infrastructure|Managed automatically|Reserved servers|
+|Scaling|Automatic, scales to zero|Manual or auto but  not zero|
+|Latency|May have coldstart, varying comparativeley high latency|Consistently low|
+|Cost|Pay per request|Pay for allocated resource|
+|Performance|Variable|Predicatable|
+|Best for|low traffic|high traffic|
+
+- Use serverless wwhen traffic is irregular and cost efficiency matters.
+- Use dedicated endpoints when you need consistent performance.
+
 
 ### ❓ Question #2:
 
@@ -91,13 +102,21 @@ Why is it important to consider token throughput and latency when choosing an LL
 
 #### ✅ Answer:
 
-_(insert your answer here)_
+For user-facing applications, token throughput and latency directly determines the perceived responsiveness, scalability and cost efficiency of the system. Poor choices here quickly degrades user experience or make the system too expensive to operate.
+
+They are critical because
+- Lower latency means users get answers quickly, making the application feel responsive.
+- High throughput allows faster responses and supports more concurrent users. Many apps stream tokens as they are generated.
+- In a real production app, multiple users interact at once. If each request has high latency or low throughput, the system handles fewer concurrent requests, which can queue the requests and can trigger rate limits or errors.
+- Poor throughput will increase the cost.
 
 ## Activity 1: RAGAS Evaluation with Cost Analysis
 
 Use RAGAS to evaluate your open-source Fireworks AI powered RAG app against an OpenAI `gpt-4.1-mini` powered equivalent. Compare retrieval quality, answer faithfulness, and end-to-end accuracy across both providers.
 
 Additionally, instrument both pipelines with **LangSmith** to capture token usage and cost per query. Use LangSmith's tracing and cost dashboards to compare the total cost of running each provider at scale. Include your evaluation results, cost breakdown, and analysis in your Loom video.
+
+#### ✅ Answer: For complete implementation of Activity-1, refer notebook Activity_1_RAGAS_Evaluation.ipynb.
 
 ## Advanced Activity: Local Models
 
