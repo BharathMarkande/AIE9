@@ -69,7 +69,7 @@ def _build_rag_graph(data_dir: str):
 
     # Embeddings and vector store (in-memory Qdrant); provider from env (OpenAI or Fireworks)
     embedding_model = get_embedding_model()
-    print(embedding_model)
+    print(f"Embedding model: {embedding_model}")
     qdrant_vectorstore = QdrantVectorStore.from_documents(
         documents=chunks,
         embedding=embedding_model,
@@ -86,7 +86,7 @@ def _build_rag_graph(data_dir: str):
     )
     chat_prompt = ChatPromptTemplate.from_messages([("human", human_template)])
     generator_llm = get_chat_model()
-    print(generator_llm)
+    print(f"Generator LLM: {generator_llm}")
 
     def retrieve(state: _RAGState) -> _RAGState:
         retrieved_docs = retriever.invoke(state["question"]) if retriever else []

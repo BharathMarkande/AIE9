@@ -63,7 +63,7 @@ def get_embedding_model() -> Any:
         return OpenAIEmbeddings(model=model)
     # Fireworks
     model = os.environ.get(
-        "FIREWORKS_EMBEDDING_MODEL", "accounts/fireworks/models/qwen3-embedding-8b"
+        "FIREWORKS_EMBEDDING_MODEL", "accounts/fireworks/models/qwen3-embedding-4b"
     )
     return OpenAIEmbeddings(
         model=model,
